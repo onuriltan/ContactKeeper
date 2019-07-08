@@ -4,7 +4,10 @@ package-lock.json
 
 .DS_Store
 node_modules
-/dist
+/client/build
+/client/.env.local
+/client/.env.*.local
+
 
 # local env files
 .env.local
