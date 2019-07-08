@@ -1,9 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const jwt = require('jsonwebtoken');
-const { check, validationResult } = require('express-validator');
 const bcrypt = require('bcryptjs');
 const config = require('config');
+const { check, validationResult } = require('express-validator');
 
 const User = require('../models/User');
 
@@ -43,7 +43,7 @@ router.post('/', [
 
   } catch (e) {
     console.error(e.message);
-    res.status(500).send('Server error');
+    res.status(500).send('Server Error');
   }
 });
 
