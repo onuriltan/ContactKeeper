@@ -60,9 +60,7 @@ const ContactState = props => {
       contacts: state.contacts
     }}
   >
-
     { props.children }
-
   </ContactContext.Provider>
 }
 
