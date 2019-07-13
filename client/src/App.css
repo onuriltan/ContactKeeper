@@ -298,6 +298,16 @@ input {
   margin: 1.2rem 0;
 }
 
+.mt-0 {
+  margin-top: 0;
+}
+
+.form-main{
+  padding: 20px;
+  border: 1px solid lightgray;
+  background: var(--light-color);
+}
+
 .form-text {
   display: block;
   margin-top: 0.3rem;

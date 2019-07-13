@@ -23,7 +23,7 @@ const ContactFilter = props => {
 
   return (
     <form>
-      <input ref={textRef} type="text" placeholder='Filter contacts ...' onChange={onChange}/>
+      <input className='mt-0' ref={textRef} type="text" placeholder='Filter contacts ...' onChange={onChange}/>
     </form>
   );
 };
