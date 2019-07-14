@@ -1,5 +1,4 @@
 import React from 'react'
-import * as PropTypes from 'prop-types'
 
 const About = () => {
 
@@ -15,6 +14,4 @@ const About = () => {
     </div>
   )
 }
-
-
 export default About

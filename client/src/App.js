@@ -7,26 +7,32 @@ import NavBar from './components/layout/NavBar'
 
 import ContactState from './context/contact/ContactState'
 import AuthState from './context/auth/AuthState'
+import AlertState from './context/alert/AlertState'
+
 import Register from './components/auth/Register'
 import Login from './components/auth/Login'
+import Alerts from './components/layout/Alerts'
 
 const App = () => {
   return (
     <AuthState>
       <ContactState>
-        <Router>
-          <Fragment>
-            <NavBar />
-            <div className="container">
-              <Switch>
-                <Route exact path='/' component={Home} />
-                <Route exact path='/about' component={About} />
-                <Route exact path='/login' component={Login} />
-                <Route exact path='/register' component={Register} />
-              </Switch>
-            </div>
-          </Fragment>
-        </Router>
+        <AlertState>
+          <Router>
+            <Fragment>
+              <NavBar />
+              <div className="container">
+                <Alerts/>
+                <Switch>
+                  <Route exact path='/' component={Home} />
+                  <Route exact path='/about' component={About} />
+                  <Route exact path='/login' component={Login} />
+                  <Route exact path='/register' component={Register} />
+                </Switch>
+              </div>
+            </Fragment>
+          </Router>
+        </AlertState>
       </ContactState>
     </AuthState>
   );
