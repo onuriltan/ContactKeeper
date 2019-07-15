@@ -26,18 +26,17 @@ export default (state, action) => {
         error:  null,
         current: null
       }
-
     case ADD_CONTACT:
       return {
         ...state,
-        contacts: [...state.contacts, action.payload],
+        contacts: [action.payload, ...state.contacts],
         loading: false
       }
     case UPDATE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.map(contact =>
-          contact.id === action.payload.id ? action.payload : contact
+          contact._id === action.payload._id ? action.payload : contact
         ),
         loading: false
       }
@@ -45,7 +44,7 @@ export default (state, action) => {
       return {
         ...state,
         // returns the contact array that has not id equal to payload id, means filters
-        contacts: state.contacts.filter(contact => contact.id !== action.payload),
+        contacts: state.contacts.filter(contact => contact._id !== action.payload),
         loading: false
       }
     case SET_CURRENT_CONTACT:

@@ -60,7 +60,8 @@ router.put('/:id', auth, async (req, res) => {
   if(email) updatedContact.email = email;
   if(phone) updatedContact.phone = phone;
   if(type) updatedContact.type = type;
-  
+  console.log(updatedContact)
+
   try {
     let contact = await Contact.findById(req.params.id);
     if(!contact) return res.status(404).json({ msg: "Contact not found" });
@@ -70,7 +71,7 @@ router.put('/:id', auth, async (req, res) => {
       return res.status(401).json({ msg: "Not authorized" });
     }
 
-    contact = await Contact.findByIdAndUpdate(req.params.id, { $set: updatedContact })
+    contact = await Contact.findByIdAndUpdate(req.params.id, updatedContact, { new: true })
     res.json(contact)
   }catch (e) {
     console.error(e.message);
@@ -91,7 +92,7 @@ router.delete('/:id', auth, async (req, res) => {
     return res.status(401).json({ msg: "Not authorized" });
   }
 
-  Contact.findByIdAndDelete(req.params.id);
+  await Contact.findByIdAndDelete(req.params.id);
   return res.status(200).json({ msg: contact.name+" removed" });
 
 });

@@ -12,6 +12,9 @@ const ContactFilter = () => {
     }
   })
 
+  const onSubmit = e => {
+    e.preventDefault()
+  }
   const onChange = e => {
     if(textRef.current.value !== '') {
       filterContacts(e.target.value)
@@ -21,7 +24,7 @@ const ContactFilter = () => {
   }
 
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <input className='mt-0' ref={textRef} type="text" placeholder='Filter contacts ...' onChange={onChange}/>
     </form>
   );
