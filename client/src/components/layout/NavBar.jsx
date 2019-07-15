@@ -1,8 +1,37 @@
-import React from 'react'
+import React, { Fragment, useContext} from 'react'
 import * as PropTypes from 'prop-types'
 import {NavLink} from "react-router-dom";
+import AuthContext from '../../context/auth/authContext'
+
+
 
 const NavBar = ({ title, icon }) => {
+  const authContext = useContext(AuthContext)
+  const { isAuthenticated, logout, user } = authContext
+
+  const authLinks = (
+    <Fragment>
+      <li>
+        Hello { user && user.name }
+      </li>
+      <li>
+        <a href="#!">
+          <i className="fas fa-sign-out-alt"/>{' '}<span className="hide-sm">Logout</span>
+        </a>
+      </li>
+    </Fragment>
+  )
+
+  const guestLinks = (
+    <Fragment>
+      <li>
+        <NavLink to='/register'>Register</NavLink>
+      </li>
+      <li>
+        <NavLink to='/login'>Login</NavLink>
+      </li>
+    </Fragment>
+  )
 
   return (
     <div className='navbar bg-primary'>
@@ -10,18 +39,7 @@ const NavBar = ({ title, icon }) => {
         <i className={icon} /> {title}
       </h1>
       <ul>
-        <li>
-          <NavLink to='/'>Home</NavLink>
-        </li>
-        <li>
-          <NavLink to='/about'>About</NavLink>
-        </li>
-        <li>
-          <NavLink to='/register'>Register</NavLink>
-        </li>
-        <li>
-          <NavLink to='/login'>Login</NavLink>
-        </li>
+        {isAuthenticated ? authLinks : guestLinks}
       </ul>
     </div>
   )
