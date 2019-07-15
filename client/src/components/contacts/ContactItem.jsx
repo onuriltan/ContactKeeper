@@ -2,13 +2,13 @@ import React, { useContext } from 'react'
 import PropTypes from 'prop-types'
 import ContactContext from '../../context/contact/contactContext'
 
-const ContactItem = ({contact}) => {
+const ContactItem = ({ contact }) => {
   const contactContext = useContext(ContactContext)
   const { deleteContact, setCurrentContact, clearCurrentContact } = contactContext
-  const {id, name, email, phone, type} = contact
+  const { _id, name, email, phone, type } = contact
 
   const onDelete = () => {
-    deleteContact(id)
+    deleteContact(_id)
     clearCurrentContact()
   }
 
@@ -19,7 +19,8 @@ const ContactItem = ({contact}) => {
     <div className='card bg-light'>
       <h3 className="text-dash-primary text-left">
         {name}{' '}
-        <span style={{ float: 'right' }} className={'badge ' + (type === 'professional' ? 'badge-success' : 'badge-primary')}>
+        <span style={{ float: 'right' }}
+              className={'badge ' + (type === 'professional' ? 'badge-success' : 'badge-primary')}>
         {type.charAt(0).toUpperCase() + type.slice(1)}
         </span>
       </h3>
