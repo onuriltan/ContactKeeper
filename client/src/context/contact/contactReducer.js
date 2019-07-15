@@ -1,33 +1,52 @@
 import {
   ADD_CONTACT,
+  GET_CONTACTS,
   DELETE_CONTACT,
   SET_CURRENT_CONTACT,
   CLEAR_CURRENT_CONTACT,
   UPDATE_CONTACT,
   CONTACT_ERROR,
   FILTER_CONTACTS,
-  CLEAR_FILTER
+  CLEAR_FILTER, CLEAR_CONTACTS
 } from '../types'
 
 export default (state, action) => {
   switch (action.type) {
+    case GET_CONTACTS:
+      return {
+        ...state,
+        contacts: action.payload,
+        loading: false
+      }
+    case CLEAR_CONTACTS:
+      return {
+        ...state,
+        contacts: null,
+        filtered: null,
+        error:  null,
+        current: null
+      }
+
     case ADD_CONTACT:
       return {
         ...state,
-        contacts: [...state.contacts, action.payload]
+        contacts: [...state.contacts, action.payload],
+        loading: false
       }
     case UPDATE_CONTACT:
       return {
         ...state,
         contacts: state.contacts.map(contact =>
           contact.id === action.payload.id ? action.payload : contact
-        )
+        ),
+        loading: false
       }
     case DELETE_CONTACT:
       return {
         ...state,
-        contacts: state.contacts.filter(contact => contact.id !== action.payload)
         // returns the contact array that has not id equal to payload id, means filters
+        contacts: state.contacts.filter(contact => contact.id !== action.payload),
+        loading: false
       }
     case SET_CURRENT_CONTACT:
       return {

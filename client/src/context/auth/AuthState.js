@@ -31,6 +31,7 @@ const ContactState = props => {
     try {
       const res = await axios.get('api/auth')
       dispatch({ type: USER_LOADED, payload: res.data })
+      console.log('user loaded')
     }catch (e) {
       dispatch({ type: AUTH_ERROR })
     }
