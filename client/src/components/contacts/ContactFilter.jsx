@@ -1,8 +1,7 @@
 import React, { useContext, useRef, useEffect } from 'react'
-import PropTypes from 'prop-types'
 import ContactContext from '../../context/contact/contactContext'
 
-const ContactFilter = props => {
+const ContactFilter = () => {
   const contactContext = useContext(ContactContext)
   const { filterContacts, clearFilter, filteredContacts } = contactContext
   const textRef = useRef(null)

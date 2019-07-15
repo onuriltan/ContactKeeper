@@ -14,7 +14,13 @@ const NavBar = ({ title, icon }) => {
           <NavLink to='/'>Home</NavLink>
         </li>
         <li>
-          <NavLink to='/About'>About</NavLink>
+          <NavLink to='/about'>About</NavLink>
+        </li>
+        <li>
+          <NavLink to='/register'>Register</NavLink>
+        </li>
+        <li>
+          <NavLink to='/login'>Login</NavLink>
         </li>
       </ul>
     </div>
