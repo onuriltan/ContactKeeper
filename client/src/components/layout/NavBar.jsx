@@ -22,7 +22,7 @@ const NavBar = ({ title, icon }) => {
         Hello { user && user.name }
       </li>
       <li>
-        <a href="#!" onClick={onLogout}>
+        <a href="javascript:;" onClick={onLogout}>
           <i className="fas fa-sign-out-alt"/>{' '}<span className="hide-sm">Logout</span>
         </a>
       </li>
