@@ -13,7 +13,7 @@ const Home = () => {
     // eslint-disable-next-line
   }, [])
   return (
-    <div className='grid-2'>
+    <div className='grid-2 container' style={{marginTop: '30px'}}>
       <div>
         <ContactForm />
       </div>
